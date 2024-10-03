@@ -102,14 +102,39 @@ include 'conexao.php';
 </head>
 <body>
 
-    <!-- Cabeçalho -->
+      <!-- Cabeçalho -->
     <header>
-        <div class="container">
-            <h1>ParkPlus - Estacionamento Inteligente</h1>
-            <p>Eficiência e praticidade no seu estacionamento</p>
-        </div>
-    </header>
+    <div class="container text-center py-4">
+        <!-- Logo e nome do sistema -->
+        <h1>ParkPlus - Estacionamento Inteligente</h1>
+       
+        <!-- Navegação centralizada abaixo do texto -->
+        <nav class="mt-3">
+            <ul class="nav justify-content-center">
+                <li class="nav-item">
+                    <a href="saida.php" class="nav-link text-white hover-link">Saída</a>
+                </li>
+                <li class="nav-item">
+                    <a href="historico.php" class="nav-link text-white hover-link">Histórico</a>
+                </li>
+                <li class="nav-item">
+                    <a href="admin.php" class="nav-link text-white hover-link">Administração</a>
+                </li>
+                <li class="nav-item">
+                    <a href="recibo.php" class="nav-link text-white hover-link">Buscar Recibo</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</header>
 
+<!-- Estilo adicional para o hover -->
+<style>
+    .hover-link:hover {
+        text-decoration: none;
+        color: #f0a500; /* Cor de hover personalizada */
+    }
+</style>
     <!-- Seção informativa -->
     <section class="info-section">
         <div class="container">
