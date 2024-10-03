@@ -41,20 +41,29 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-// Função para calcular a tarifa
+// Função para calcular a tarifa considerando frações de hora
 function calcularTarifa($tipo_veiculo, $tempo) {
-    $tarifa = 0;
+    $tarifa_inicial = 0; // Valor inicial para cada tipo de veículo
+    $tarifa_por_hora = 2; // Tarifa adicional por hora ou fração
 
+    // Define o valor inicial da tarifa conforme o tipo de veículo
     if ($tipo_veiculo == "carro de passeio") {
-        $tarifa = 4 + (($tempo > 1) ? ($tempo - 1) * 2 : 0);
+        $tarifa_inicial = 4;
     } elseif ($tipo_veiculo == "moto") {
-        $tarifa = 2 + (($tempo > 1) ? ($tempo - 1) * 2 : 0);
+        $tarifa_inicial = 2;
     } elseif ($tipo_veiculo == "caminhonete") {
-        $tarifa = 6 + (($tempo > 1) ? ($tempo - 1) * 2 : 0);
+        $tarifa_inicial = 6;
     }
 
-    return $tarifa;
+    // Calcula o tempo de permanência em frações de hora (arredonda para cima)
+    $tempo_em_horas = ceil($tempo * 60) / 60;
+
+    // O valor total será o valor inicial mais o adicional por tempo
+    $tarifa_total = $tarifa_inicial + ($tempo_em_horas > 1 ? ($tempo_em_horas - 1) * $tarifa_por_hora : 0);
+
+    return $tarifa_total;
 }
+
 ?>
 
 <!DOCTYPE html>
